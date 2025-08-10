@@ -1,0 +1,19 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate synthetic time series data
+np.random.seed(42)
+dates = pd.date_range('20210101', periods=100)
+data = pd.Series(np.random.randn(100).cumsum(), index=dates)
+
+# Calculate moving average
+window_size = 5
+moving_avg = data.rolling(window=window_size).mean()
+
+# Plot
+plt.plot(data, label='Original')
+plt.plot(moving_avg, label='Moving Average', color='red')
+plt.legend()
+plt.title('Time Series with Moving Average')
+plt.show()
