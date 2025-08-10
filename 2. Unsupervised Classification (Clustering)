@@ -1,0 +1,18 @@
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+
+# Apply KMeans
+kmeans = KMeans(n_clusters=3, random_state=42)
+clusters = kmeans.fit_predict(X)
+
+# Visualize clusters (using first two features)
+plt.scatter(X[:, 0], X[:, 1], c=clusters, cmap='viridis')
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.title('KMeans Clustering')
+plt.show()
